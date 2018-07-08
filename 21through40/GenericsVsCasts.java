@@ -39,8 +39,16 @@ public class GenericsVsCasts {
 
     System.out.println(objarr); // ["one", "two", 123] !!!
 
-    //String uu = (String).objarr.get(2); // runtime ClassCastException
+    Integer ii = (Integer)objarr.get(2);
+    System.out.println(ii);
 
-    //strarr.add(i); // won't compile
+    if (s == ss) {
+      System.out.println("Yippee Skippy!");
+    } else {
+      System.out.println("Boo!");
+    }
+    // String uu = (String).objarr.get(2); // runtime ClassCastException
+
+    //strarr.add(i); // won't compile.
   }
 }
