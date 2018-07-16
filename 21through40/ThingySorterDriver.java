@@ -26,6 +26,7 @@ public class ThingySorterDriver {
     Random gen = new Random();
     Integer[] inums2 = new Integer[50000];
     Integer[] inums2copy = new Integer[50000];
+    // okay, for exercise 2, 50M was a bit much...
     for ( int i=0; i<inums2.length; i++) {
       inums2[i] = gen.nextInt(1000);
       inums2copy[i] = inums2[i];
@@ -45,6 +46,7 @@ public class ThingySorterDriver {
     System.out.println( (stop - start) / 1000 / 1000.0 + " milliseconds.");
 
     ThingySorter<Integer> sort2b = new ThingySorter<>(inums2copy);
+    // ThingySorter<Integer> sort2b = new ThingySorter<>(inums2); // this will take just a fraction of the time, as inums2 was sorted by the previous ThingySorter.
     System.out.print("\n" + inums2copy.length + " integers sorted? ");
     System.out.println(sort2b.isSorted() );
     System.out.print("Sorting. . .");
