@@ -17,7 +17,7 @@ public class Fish {
   }
 
   public String toString() {
-    return name + ", fish #" + id + " of " + count + " and is " + color;
+    return name + ", a " + color + " fish, #" + id + " of " + count;
   }
 
   public static int numCreated() {

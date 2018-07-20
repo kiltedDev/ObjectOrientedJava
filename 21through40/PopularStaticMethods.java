@@ -34,5 +34,16 @@ public class PopularStaticMethods {
     model += 10;
     System.out.println( String.valueOf(model) );
     System.out.println( ""+model );
+
+    String verb = "Rafting";
+    Boolean presentTense = verb.endsWith("ing");
+
+    System.out.println("It is " + presentTense + " that " + verb + " is present tense.");
+
+    String twentySeven = Integer.toBinaryString(27);
+    Integer radix = Integer.parseInt( twentySeven, 2);
+
+    System.out.println( twentySeven + " is binary code for " + radix);
+
   }
 }
