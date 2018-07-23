@@ -31,6 +31,13 @@ public class ReferenceParameters {
     a = chopArray2(a);
     System.out.println( Arrays.toString(a) );
     System.out.println("a is at reference " + a);
+
+    System.out.println("\na is at reference " + a);
+    a = smallerIncrementedArray(a);
+    System.out.println( Arrays.toString(a) );
+    System.out.println("a is at reference " + a);
+
+
   }
 
   public static void squareValues( int[] arr) {
@@ -53,6 +60,15 @@ public class ReferenceParameters {
     int[] c = new int[arr.length/2];
     for (int i=0; i<c.length; i++) {
       c[i] = arr[i];
+    }
+    System.out.println("Returning the reference " + c);
+    return c;
+  }
+
+  public static int[] smallerIncrementedArray(int[] arr) {
+    int[] c = new int[arr.length-1];
+    for (int i=0; i<c.length; i++) {
+      c[i] = arr[i]+1;
     }
     System.out.println("Returning the reference " + c);
     return c;
