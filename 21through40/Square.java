@@ -8,6 +8,6 @@ public class Square extends Rect {
   }
 
   public String toString() {
-    return "Square, " + super.getLength() + "x" + super.getLength();
+    return "Square, " + getLength() + "x" + this.getLength();
   }
 }

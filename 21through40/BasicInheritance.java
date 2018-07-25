@@ -15,5 +15,8 @@ public class BasicInheritance {
     System.out.println("\n" + r + ", and " + s );
     r = s;
     System.out.println("\nHere is my rectangle: " + r );
+
+    s = rect1;
+    System.out.println("\nHere is my rectangle: " + s );
   }
 }
