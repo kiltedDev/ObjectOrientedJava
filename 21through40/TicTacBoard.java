@@ -23,12 +23,16 @@ public class TicTacBoard extends GameBoard {
     return numTurns%2 == 0 ? "X" : "O";
   }
 
+  public String nextPlayer() {
+    return numTurns%2 == 1 ? "X" : "O";
+  }
+
   public boolean isWinner() {
     return isWinner("X") || isWinner("O");
   }
 
   public boolean isOver() {
-    return isWinner() || numTurns == 9;
+    return isWinner() || numTurns == 9 || ( numTurns == 8 && isTie( nextPlayer() ) );
   }
 
   public boolean isWinner( String p ) {
@@ -42,12 +46,37 @@ public class TicTacBoard extends GameBoard {
     if ( winCheck(p, 2,0, 1,1, 0,2) ) return true;
     return false;
   }
+
   private boolean winCheck(String p, int a,int b, int c,int d, int e,int f) {
     if ( g[a][b] == null || g[c][d] == null || g[e][f] == null )
     return false;
     String A = g[a][b].getSymbol();
     String B = g[c][d].getSymbol();
     String C = g[e][f].getSymbol();
+    return ( p.equals(A) && A.equals(B) && B.equals(C) );
+  }
+
+  public boolean isTie( String p ) {
+    if ( canWin(p, 0,0, 0,1, 0,2) ) return false;
+    if ( canWin(p, 1,0, 1,1, 1,2) ) return false;
+    if ( canWin(p, 2,0, 2,1, 2,2) ) return false;
+    if ( canWin(p, 0,0, 1,0, 2,0) ) return false;
+    if ( canWin(p, 0,1, 1,1, 2,1) ) return false;
+    if ( canWin(p, 0,2, 1,2, 2,2) ) return false;
+    if ( canWin(p, 0,0, 1,1, 2,2) ) return false;
+    if ( canWin(p, 2,0, 1,1, 0,2) ) return false;
+    return true;
+  }
+
+  private boolean canWin(String p, int a,int b, int c,int d, int e,int f) {
+    if ( g[a][b] == null || g[c][d] == null || g[e][f] == null )
+    return false;
+    String A = g[a][b].getSymbol();
+    String B = g[c][d].getSymbol();
+    String C = g[e][f].getSymbol();
+    if (A.equals(null) ) { A = p; }
+    if (B.equals(null) ) { B = p; }
+    if (C.equals(null) ) { C = p; }
     return ( p.equals(A) && A.equals(B) && B.equals(C) );
   }
 }
