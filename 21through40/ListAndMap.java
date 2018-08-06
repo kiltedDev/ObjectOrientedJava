@@ -16,11 +16,11 @@ public class ListAndMap {
       wordCounts = new HashMap<>();
     }
 
-    Scanner input = new Scanner(new Java.io.File("./datafiles/en-sample.txt"));
+    Scanner input = new Scanner(new java.io.File("../datafiles/en-sample.txt"));
     buildMap(input, wordCounts);
     input.close();
 
-    List<String> winner;
+    List<String> winners;
     if ( Math.random() < 0.5 ) {
       winners = new ArrayList<>();
     } else {
@@ -30,11 +30,16 @@ public class ListAndMap {
     buildList(wordCounts, winners, 1000);
     java.util.Collections.sort(winners);
     System.out.println(winners);
+    System.out.println();
+    System.out.println();
+    System.out.println(longTail(wordCounts));
+
+    System.out.println("\nThe most popular word is \"" + theVeryBest(wordCounts) + "\"");
 
     Scanner kb = new Scanner(System.in);
     String word;
     do {
-      System.out.print("\nEnter a word of ENTER to quit: ");
+      System.out.print("\nEnter a word or ENTER to quit: ");
       word = kb.nextLine().toLowerCase();
       if (word.length() == 0) {
         break;
@@ -62,5 +67,28 @@ public class ListAndMap {
         list.add(key);
       }
     }
+  }
+
+  public static String theVeryBest(Map<String, Integer> map) {
+    int bestCount = -1;
+    String bestString = "";
+    for ( String key : map.keySet() ) {
+      int keyCount = map.get(key);
+      if ( keyCount > bestCount) {
+        bestCount = keyCount;
+        bestString = key;
+      }
+    }
+    return bestString;
+  }
+
+  public static List<String> longTail( Map<String, Integer> map ) {
+    List<String> list = new ArrayList<>();
+    for ( String key : map.keySet() ) {
+      if ( map.get(key) == 1) {
+        list.add(key);
+      }
+    }
+    return list;
   }
 }
