@@ -6,7 +6,9 @@ public class DropGamePieceTester {
     System.out.println( one + "\n" + two);
     two.translate(-1,0);
     System.out.println( one + "\n" + two);
-    System.out.println( one.compareTo(two));
+    System.out.println( one.compareTo(two) );
 
+    DropGamePiece three = new DropGamePiece( oneLoc.below(), "A");
+    System.out.println( one.getSymbol().equals( three.getSymbol() ) );
   }
 }

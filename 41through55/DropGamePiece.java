@@ -37,4 +37,9 @@ public class DropGamePiece
   public String toString() {
     return "DropGamePiece " + symbol + " at " + loc;
   }
+
+  public boolean equals(Object obj) {
+    DropGamePiece other = (DropGamePiece)obj;
+    return (this.symbol.equals(other.symbol) && this.loc.compareTo(other.loc) == 0);
+  }
 }
