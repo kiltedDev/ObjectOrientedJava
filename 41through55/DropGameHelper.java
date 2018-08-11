@@ -36,14 +36,80 @@ public class DropGameHelper {
 
     Location left, right, below, above;
     int adjacentCount = 0;
+    boolean goLeft = true,
+            goRight = true,
+            goUp = true,
+            goDown = true,
+            goDR = true,
+            goDL = true;
     left = loc.left();
+    while ( goLeft ) {
+      if (isValid(left) && p.equals(this.playerAt(left)) ) {
+        adjacentCount++;
+        left = left.left();
+      } else {
+        goLeft = false;
+      }
+    }
+
     right = loc.right();
-    below = loc.below();
-    above = loc.above();
-    if ( isValid(left) && p.equals(this.playerAt(left)) ) { adjacentCount++; }
-    if ( isValid(right) && p.equals(this.playerAt(right)) ) { adjacentCount++; }
-    if ( isValid(below) && p.equals(this.playerAt(below)) ) { adjacentCount++; }
-    if ( isValid(above) && p.equals(this.playerAt(above)) ) { adjacentCount++; }
+    while ( goRight ) {
+      if (isValid(right) && p.equals(this.playerAt(right)) ) {
+        adjacentCount++;
+        right = right.right();
+      } else {
+        goRight = false;
+      }
+    }
+
+    if (adjacentCount < 3) {
+      adjacentCount = 0;
+      below = loc.below();
+      while ( goDown ) {
+        if (isValid(below) && p.equals(this.playerAt(below)) ) {
+          adjacentCount++;
+          below = below.below();
+        } else {
+          goDown = false;
+        }
+      }
+
+      above = loc.above();
+      while ( goUp ) {
+        if (isValid(above) && p.equals(this.playerAt(above)) ) {
+          adjacentCount++;
+          above = above.above();
+        } else {
+          goUp = false;
+        }
+      }
+    }
+
+    if (adjacentCount < 3) {
+      adjacentCount = 0;
+      Location dr = loc.below().right();
+      while ( goDR ) {
+        if (isValid(dr) && p.equals(this.playerAt(dr)) ) {
+          adjacentCount++;
+          dr = dr.below().right();
+        } else {
+          goDR = false;
+        }
+      }
+    }
+
+    if (adjacentCount < 3) {
+      adjacentCount = 0;
+      Location dl = loc.below().left();
+      while ( goDL ) {
+        if (isValid(dl) && p.equals(this.playerAt(dl)) ) {
+          adjacentCount++;
+          dl = dl.below().left();
+        } else {
+          goDL = false;
+        }
+      }
+    }
 
     return adjacentCount >= 3;
   }

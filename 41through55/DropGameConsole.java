@@ -4,11 +4,11 @@ public class DropGameConsole {
   public static void main( String[] args ) {
     Scanner keyboard = new Scanner(System.in);
 
-    String p = "O";
+    String p = "○";
     DropGameHelper game = new DropGameHelper(6,7);
     int col;
 
-    while ( !(game.isWinner("O")||game.isWinner("#")||game.isFull()) ) {
+    while ( !(game.isWinner("○")||game.isWinner("●")||game.isFull()) ) {
       System.out.println(game);
       System.out.println("'" + p + "', choose your column: ");
       col = keyboard.nextInt();
@@ -25,19 +25,19 @@ public class DropGameConsole {
       }
       game.playMove(p,col);
 
-      if ( p.equals("O") ) {
-        p = "#";
+      if ( p.equals("○") ) {
+        p = "●";
       } else {
-        p = "O";
+        p = "○";
       }
     }
 
     System.out.println(game);
 
-    if ( game.isWinner("O") ) {
-      System.out.println("O is the winner!");
-    } else if ( game.isWinner("#") ) {
-      System.out.println("# is the winner!");
+    if ( game.isWinner("○") ) {
+      System.out.println("○ is the winner!");
+    } else if ( game.isWinner("●") ) {
+      System.out.println("● is the winner!");
     } else if (game.isFull() ) {
       System.out.println("The game is a tie.");
     }
