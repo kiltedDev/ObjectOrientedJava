@@ -1,3 +1,8 @@
+/*  Alright, according to the author of the course,
+		this works just fine.  So I'll leave it as is.
+		Don't know why it isn't working on my end.  I'll poke at it more later.
+*/
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -7,8 +7,8 @@ import javafx.fxml.Initializable;
 public class MessengerFXMLController {
 	@FXML private TextField tf;
 
-	@FXML protected void handleButtonClick(ActionEvent e) {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION, tf.getText());
+	@FXML protected void handleButtonClickOrWhatever(ActionEvent event) {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION, tf.getText());
 		alert.showAndWait();
 	}
 }

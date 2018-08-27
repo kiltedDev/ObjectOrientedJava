@@ -14,5 +14,5 @@
 		<Button text="Print Message"
 			  GridPane.columnIndex="0" GridPane.rowIndex="0"
 			  GridPane.halignment="CENTER"
-			  onAction="#handleButtonClick"/>
+			  onAction="#handleButtonClickOrWhatever"/>
 </GridPane>
