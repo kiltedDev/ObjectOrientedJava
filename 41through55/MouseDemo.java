@@ -25,8 +25,13 @@ public class MouseDemo extends Application {
     gc.setFont(Font.font(24));
     canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
       public void handle(MouseEvent t) {
-        curColor = Color.GREEN;
-        curMessage = "The Square is green.";
+        if (curColor != Color.GREEN) {
+          curColor = Color.GREEN;
+          curMessage = "The square is green.";
+        } else {
+          curColor = Color.RED;
+          curMessage = "The square is red.";
+        }
       }
     });
 
