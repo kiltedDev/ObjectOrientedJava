@@ -36,7 +36,21 @@ public class BouncingLogo extends Application {
 			public void handle(KeyEvent t) {
 				if ( t.getCode() == KeyCode.SPACE )
 					flashing = ! flashing;
-			}
+  			else if (t.getCode() == KeyCode.B ) {
+          flashing = false;
+          rect.setFill(Color.WHITE);
+        } else if (t.getCode() == KeyCode.Q ) {
+          dx = 0;
+          dy = 0;
+        } else if (t.getCode() == KeyCode.R ) {
+          dx = (int)(Math.random() * 15) -7;
+          dy = (int)(Math.random() * 15) -7;
+
+          System.out.println(dx + ", " + dy);
+        } else if (t.getCode() == KeyCode.ESCAPE ) {
+          System.exit(0);
+        }
+      }
 		});
 
 		root.getChildren().add(rect);
