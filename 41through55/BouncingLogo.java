@@ -45,8 +45,6 @@ public class BouncingLogo extends Application {
         } else if (t.getCode() == KeyCode.R ) {
           dx = (int)(Math.random() * 15) -7;
           dy = (int)(Math.random() * 15) -7;
-
-          System.out.println(dx + ", " + dy);
         } else if (t.getCode() == KeyCode.ESCAPE ) {
           System.exit(0);
         }
