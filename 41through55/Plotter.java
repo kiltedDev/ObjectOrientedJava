@@ -11,8 +11,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Plotter extends Application {
-  private double x, y;
+  private double x, y, x2, y2;
   private boolean up, down, left, right;
+  private boolean up2, down2, left2, right2;
 
   public void start(Stage stage) {
     Group root = new Group();
@@ -21,21 +22,31 @@ public class Plotter extends Application {
     Canvas canvas = new Canvas(900,700);
     GraphicsContext gc = canvas.getGraphicsContext2D();
 
-    x = 450;
+    x = 300;
     y = 350;
+    x2 = 600;
+    y2 = 350;
     int speed = 7;
 
     scene.addEventHandler(KeyEvent.KEY_PRESSED,
       new EventHandler<KeyEvent>() {
         public void handle(KeyEvent t) {
-          if (t.getCode() == KeyCode.UP || t.getCode() == KeyCode.W )
+          if ( t.getCode() == KeyCode.W )
             up = true;
-          if (t.getCode() == KeyCode.DOWN || t.getCode() == KeyCode.S )
+          if ( t.getCode() == KeyCode.S )
             down = true;
-          if (t.getCode() == KeyCode.LEFT || t.getCode() == KeyCode.A )
+          if ( t.getCode() == KeyCode.A )
             left = true;
-          if (t.getCode() == KeyCode.RIGHT || t.getCode() == KeyCode.D )
+          if ( t.getCode() == KeyCode.D )
             right = true;
+          if (t.getCode() == KeyCode.UP )
+            up2 = true;
+          if (t.getCode() == KeyCode.DOWN )
+            down2 = true;
+          if (t.getCode() == KeyCode.LEFT )
+            left2 = true;
+          if (t.getCode() == KeyCode.RIGHT )
+            right2 = true;
 
           if ( t.getCode() == KeyCode.DIGIT1 )
             gc.setFill(Color.BLACK);
@@ -51,14 +62,22 @@ public class Plotter extends Application {
     scene.addEventHandler(KeyEvent.KEY_RELEASED,
       new EventHandler<KeyEvent>() {
         public void handle(KeyEvent t) {
-          if (t.getCode() == KeyCode.UP || t.getCode() == KeyCode.W )
+          if (t.getCode() == KeyCode.W )
             up = false;
-          if (t.getCode() == KeyCode.DOWN || t.getCode() == KeyCode.S )
+          if (t.getCode() == KeyCode.S )
             down = false;
-          if (t.getCode() == KeyCode.LEFT || t.getCode() == KeyCode.A )
+          if (t.getCode() == KeyCode.A )
             left = false;
-          if (t.getCode() == KeyCode.RIGHT || t.getCode() == KeyCode.D )
+          if (t.getCode() == KeyCode.D )
             right = false;
+          if (t.getCode() == KeyCode.UP )
+            up2 = false;
+          if (t.getCode() == KeyCode.DOWN )
+            down2 = false;
+          if (t.getCode() == KeyCode.LEFT )
+            left2 = false;
+          if (t.getCode() == KeyCode.RIGHT )
+            right2 = false;
         }
       });
 
@@ -78,7 +97,17 @@ public class Plotter extends Application {
           else if ( right )
             x += speed;
 
+          if ( up2 )
+            y2 -= speed;
+          if ( down2 )
+            y2 += speed;
+          if ( left2 )
+            x2 -= speed;
+          else if ( right2 )
+            x2 += speed;
+
           gc.fillRect(x,y,20,20);
+          gc.fillRect(x2,y2,20,20);
         }
     }.start();
   }
